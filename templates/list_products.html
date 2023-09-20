@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %} Products {% endblock %}
+
+{% block content %}
+
+<div class="w-full h-20 px-10 flex items-center justify-between shadow-md">
+    <div class="flex items-center justify-between gap-4">
+        <h1 class="text-3xl font-bold">Logo</h1>
+        <ul class="flex gap-4">
+            <li><a href="{% url 'products' %}" class="font-bold text-lg underline decoration-4 underline-offset-4 decoration-green-500">PRODUCTS</a></li>
+            <li><a href="{% url 'addproduct' %}" class="font-bold text-lg hover:underline hover:decoration-4 hover:underline-offset-4 hover:decoration-green-200">ADD PRODUCT</a></li>
+        </ul>
+    </div>
+</div>
+<div class="w-full h-full px-10 py-10">
+    <table class="w-full text-center table-auto border-collapse border border-green-200">
+        <thead>
+                <tr class="bg-green-500 text-white border border-green-200 h-12">
+                    <th class="border border-green-200">Product Name</th>
+                    <th class="border border-green-200">Catergory Name</th>
+                    <th class="border border-green-200">Quantity</th>
+                    <th class="border border-green-200">Price</th>
+                    <th class="border border-green-200">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for product in allProducts %}
+                <tr class="h-14">
+                    <td class="border border-green-200">{{product.name}}</td>
+                    <td class="border border-green-200">{{product.categoryName}}</td>
+                    <td class="border border-green-200">{{product.quantity}} KG</td>
+                    <td class="border border-green-200">{{product.price}} INR</td>
+                    <td class="border border-green-200">
+                        <a href="{% url 'updateproduct' product.id %}" class="py-2 px-6 rounded-3xl bg-green-500 hover:bg-green-600 text-white font-bold">Update</a>
+                        <a href="{% url 'deleteproduct' product.id %}" class="py-2 px-6 rounded-3xl bg-red-500 hover:bg-red-600 text-white font-bold">Delete</a>
+                    </td>
+                </tr>
+                {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

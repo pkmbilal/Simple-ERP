@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style type="text/tailwindcss">
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap');
+    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+          theme: {
+            fontFamily: { poppins: ['Poppins', 'sans-serif'] },
+            fontWeight: { normal: '400', bold: '600', bolder: '700', extrabold: '900' },
+            extend: {
+                height: {
+                    hfScreen: 'calc(100vh - 9rem)',
+                  },
+            }
+          }
+        }
+    </script>
+    <title>{% block title %} {% endblock %}</title>
+</head>
+<body class="font-poppins">
+    {% block content %}
+
+    {% endblock %}
+    <div class="w-full h-16 flex items-center justify-center bg-gray-100">
+        <p> All Rights Reserved | Designed by <a class="font-bold text-blue-500" href="https://www.linkedin.com/in/pkmbilal/" target="_blank">Mohammed Bilal</a></p>
+    </div>
+</body>
+</html>
