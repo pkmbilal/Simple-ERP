@@ -2,10 +2,9 @@ from django.shortcuts import render,redirect,get_object_or_404
 from .models import Product
 from .forms import productForm
 
-
 def listProducts(request):
     allProducts = Product.objects.all()
-    return render(request, 'list_products.html',{'allProducts':allProducts})
+    return render(request, 'list_products.html',{'athira':allProducts})
 
 def addProduct(request):
     if request.method == 'POST':
@@ -25,9 +24,9 @@ def updateProduct(request,id):
         if formdata.is_valid():
             formdata.save()
             return redirect('products')
-    else:
-        form = productForm(instance=product)
-        return render(request,'update_product.html',{'form':form})
+       
+    form = productForm(instance=product)
+    return render(request,'update_product.html',{'form':form})
     
 def deleteProduct(request,id):
     product = get_object_or_404(Product, id=id)
